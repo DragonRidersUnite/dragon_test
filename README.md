@@ -119,6 +119,7 @@ Then on PR, commit, whatever event, tests will run. If tests fail, the build wil
 - Windows script support
 - `assert.exception!`
 - GitHub Workflow Example
+- Explore putting this in a lib that can be required and still work with the runner script
 
 ## Thanks
 
