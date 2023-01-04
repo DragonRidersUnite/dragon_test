@@ -2,6 +2,23 @@
 
 A simple DSL and test runner DragonRuby Game Toolkit (DRGTK).
 
+Given a method in your game called `#text_for_setting_val`,
+
+``` ruby
+def text_for_setting_val(val)
+  case val
+  when true
+    "ON"
+  when false
+    "OFF"
+  else
+    val
+  end
+end
+```
+
+You'd test it like this:
+
 ``` ruby
 test :text_for_setting_val do |args, assert|
   assert.equal!(text_for_setting_val(true), "ON")
@@ -13,7 +30,8 @@ end
 ## Get Started
 
 1. Replace `mygame/app/tests.rb` in your DRGTK with `app/tests.rb`.
-2. Plase the `run_tests` script into 
+2. Place the `run_tests` script into the `mygame` folder of your project
+3. Run tests with `./run_tests` or just boot up your `dragonruby` engine and tests will run on file change
 
 ## Bugs/Features
 
