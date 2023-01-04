@@ -93,7 +93,7 @@ end
 
 ### Overview of files and methods:
 
-- the `./run_tests` script handles running the test suite and outputing any test failures with proper exit code
+- the `./run_tests` script handles running the test suite and outputing any test failures with proper exit code; relies upon the `--exit-on-fail` flag
 - the `#run_tests` method encapsulates all the test running logic that exists on top of DRGTK
 - the `#test` method is the main entrypoint into the DSL and is where you can define custom assertions
 - the `#it` method is just a nice little way to organize your tests in a block, kinda like RSpec:
