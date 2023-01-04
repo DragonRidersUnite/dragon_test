@@ -31,7 +31,8 @@ end
 
 1. Replace `mygame/app/tests.rb` in your DRGTK with `app/tests.rb`.
 2. Place the `run_tests` script into the `mygame` folder of your project
-3. Run tests with `./run_tests` or just boot up your `dragonruby` engine and tests will run on file change
+3. Write your tests
+4. Run tests with `./run_tests` or just boot up your `dragonruby` engine and tests will run on file change
 
 ## Bugs/Features
 
