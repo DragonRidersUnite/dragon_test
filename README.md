@@ -113,3 +113,7 @@ Then on PR, commit, whatever event, tests will run. If tests fail, the build wil
 
 - Windows script support
 - `assert.exception!`
+
+## Thanks
+
+- 68K (James) for the help/guidance/support!
