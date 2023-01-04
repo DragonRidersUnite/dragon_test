@@ -21,9 +21,14 @@ You'd test it like this:
 
 ``` ruby
 test :text_for_setting_val do |args, assert|
-  assert.equal!(text_for_setting_val(true), "ON")
-  assert.equal!(text_for_setting_val(false), "OFF")
-  assert.equal!(text_for_setting_val("other"), "other")
+  it "returns proper text for boolean vals" do
+    assert.equal!(text_for_setting_val(true), "ON")
+    assert.equal!(text_for_setting_val(false), "OFF")
+  end
+
+  it "passes the value through when not a boolean" do
+    assert.equal!(text_for_setting_val("other"), "other")
+  end
 end
 ```
 
