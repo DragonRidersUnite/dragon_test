@@ -5,12 +5,14 @@
 # assert.false!
 # assert.equal!
 # + any that you define
+#
+# Powered by Dragon Test: https://github.com/DragonRidersUnite/dragon_test
 
 def run_tests
   $gtk.tests&.passed.clear
   $gtk.tests&.inconclusive.clear
   $gtk.tests&.failed.clear
-  puts "running tests"
+  puts "💨 running tests"
   $gtk.reset 100
   $gtk.log_level = :on
   $gtk.tests.start
