@@ -69,7 +69,7 @@ You can also pass an optional failure message too as the last parameter: `assert
 
 Define custom assertions like this within `#test` (see the comment and example in the code)
 
-```
+``` ruby
 assert.define_singleton_method(:rect!) do |obj|
   assert.true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties to be a rectangle")
 end
