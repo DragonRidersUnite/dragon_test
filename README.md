@@ -2,7 +2,7 @@
 
 A simple DSL and test runner DragonRuby Game Toolkit (DRGTK).
 
-🚧 **DragonTest is a work in progress!** 🚧
+🚧 **DragonTest is a work in progress! It works, but the API and methods will change.** 🚧
 
 Given a method in your game called `#text_for_setting_val`,
 
