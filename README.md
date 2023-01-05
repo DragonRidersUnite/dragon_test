@@ -1,6 +1,8 @@
-# Dragon Test
+# DragonTest
 
 A simple DSL and test runner DragonRuby Game Toolkit (DRGTK).
+
+🚧 **DragonTest is a work in progress!** 🚧
 
 Given a method in your game called `#text_for_setting_val`,
 
@@ -67,6 +69,7 @@ You then have access to `args` that you normally do in `#tick` for a DRGTK game.
 - `assert.true!` - whether or not what's passed in is truthy, ex: `assert.true!(5 + 5 == 10)`
 - `assert.false!` - whether or not what's passed in is falsey, ex: `assert.false!(5 + 5 != 10)`
 - `assert.equal!` - whether or not what's passed into param 1 is equal to param 2, ex: `assert.equal!(5, 2 + 3)`
+- `assert.exception!` - expect the called code to raise an error, ex: `assert.exception!(-> (args) { text(args, :not_present) }, KeyError, "Key not found: :not_present")`
 
 You can also pass an optional failure message too as the last parameter: `assert.equal(5, 2 + 2, "the math didn't work")`
 
@@ -120,6 +123,8 @@ Then on PR, commit, whatever event, tests will run. If tests fail, the build wil
 - `assert.exception!`
 - GitHub Workflow Example
 - Explore putting this in a lib that can be required and still work with the runner script
+- `assert.exception!` optional message
+- Better docs
 
 ## Thanks
 

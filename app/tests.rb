@@ -45,6 +45,18 @@ def test(method)
     #   assert.true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties")
     # end
 
+    # takes three params: lambda that gets called, the error class, and the
+    # expected message.
+    # usage: assert.exception!(-> (args) { text(args, :not_present) }, KeyError, "Key not found: :not_present")
+    assert.define_singleton_method(:exception!) do |lamb, error_class, message|
+      begin
+        lamb.call(args)
+      rescue StandardError => e
+        assert.equal!(e.class, error_class)
+        assert.equal!(e.message, message)
+      end
+    end
+
     # usage: assert.int!(2 + 3)
     assert.define_singleton_method(:int!) do |obj|
       assert.true!(obj.is_a?(Integer), "that's no integer!")
