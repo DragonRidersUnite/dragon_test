@@ -4,6 +4,8 @@
 # assert.true!
 # assert.false!
 # assert.equal!
+# assert.exception!
+# assert.int!
 # + any that you define
 #
 # Powered by Dragon Test: https://github.com/DragonRidersUnite/dragon_test
@@ -37,43 +39,50 @@ def it(message)
   yield
 end
 
-def test(method)
-  test_name = "test_#{method}"
-  define_method(test_name) do |args, assert|
-    # define custom assertions here!
-    # assert.define_singleton_method(:rect!) do |obj|
-    #   assert.true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties")
-    # end
+class GTK::Assert
+  # define custom assertions here!
+  # def rect!(obj)
+  #   true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties")
+  # end
 
-    # takes three params: lambda that gets called, the error class, and the
-    # expected message.
-    # usage: assert.exception!(-> (args) { text(args, :not_present) }, KeyError, "Key not found: :not_present")
-    assert.define_singleton_method(:exception!) do |lamb, error_class, message|
-      begin
-        lamb.call(args)
-      rescue StandardError => e
-        assert.equal!(e.class, error_class)
-        assert.equal!(e.message, message)
+  # takes three params: lambda that gets called, the error class, and the
+  # expected message.
+  # usage: assert.exception!(KeyError, "Key not found: :not_present") { text(args, :not_present) }
+  def exception!(error_class, message=nil)
+    begin
+      yield
+    rescue StandardError => e
+      equal!(e.class, error_class)
+
+      if message
+        equal!(e.message, message)
       end
     end
+  end
 
-    # usage: assert.int!(2 + 3)
-    assert.define_singleton_method(:int!) do |obj|
-      assert.true!(obj.is_a?(Integer), "that's no integer!")
-    end
+  # usage: assert.int!(2 + 3)
+  def int!(obj)
+    true!(obj.is_a?(Integer), "that's no integer!")
+  end
+end
 
+def test(method)
+  test_name = "test_#{method}"
+
+  define_method(test_name) do |args, assert|
     yield(args, assert)
   end
 end
 
-test :math do |args, assert|
+test :assert_int do |args, assert|
   it "works!" do
-    assert.equal!(2 + 3, 5, "math works!")
-  end
-
-  it "returns an int" do
     assert.int!(2 + 3)
   end
+end
+
+test :assert_exception do |args, assert|
+  class MyError < StandardError; end
+  assert.exception!(MyError, "oh no") { raise MyError.new("oh no") }
 end
 
 run_tests
