@@ -117,15 +117,7 @@ In the CI script for your provider, just have it run `run_tests`.
 
 Then on PR, commit, whatever event, tests will run. If tests fail, the build will break.
 
-## TODO
-
-- Windows script support
-- `assert.exception!`
-- GitHub Workflow Example
-- Explore putting this in a lib that can be required and still work with the runner script
-- `assert.exception!` optional message
-- Better docs
-
 ## Thanks
 
 - 68K (James) for the help/guidance/support!
+- Levi for API feedback
