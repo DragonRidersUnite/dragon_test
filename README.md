@@ -47,6 +47,7 @@ end
 
 - documentation
 - simple DSL
+- additonal assertions like `assert.exception!` and `assert.includes!`
 - easily define custom assertions
 - bash script for running on CI with proper exit code and output on failure
 - watch your tests run when you start your game with the `dragonruby` executable and save the tests file
