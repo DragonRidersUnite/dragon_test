@@ -2,6 +2,8 @@
 
 A simple DSL and test runner DragonRuby Game Toolkit (DRGTK).
 
+[New to writing tests? Check out this tutorial introducing the concept in DRGTK!](https://www.dragonriders.community/recipes/testing)
+
 🚧 **DragonTest is a work in progress! It works, but the API and methods will change.** 🚧
 
 Given a method in your game called `#text_for_setting_val`,
