@@ -4,7 +4,7 @@ A simple DSL and test runner DragonRuby Game Toolkit (DRGTK).
 
 [New to writing tests? Check out this tutorial introducing the concept in DRGTK!](https://www.dragonriders.community/recipes/testing)
 
-🚧 **DragonTest is a work in progress! It works, but the API and methods will change.** 🚧
+🚧 **DragonTest is a work in progress! It works, but the interfaces may change.** 🚧
 
 Given a method in your game called `#text_for_setting_val`,
 
@@ -39,11 +39,15 @@ end
 ## Get Started
 
 1. Replace `mygame/app/tests.rb` in your DRGTK with `app/tests.rb`.
-2. Place the `run_tests` script into the `mygame` folder of your project
-3. Write your tests
-4. Run tests with `./run_tests` or just boot up your `dragonruby` engine and tests will run on file change
+2. Drop in `lib/dragon_test.rb`
+3. Drop in `test/tests.rb`
+4. Place the `run_tests` script into the `mygame` folder of your project
+5. Write your tests in `test/tests.rb`
+6. Run tests with `./run_tests` or just boot up your `dragonruby` engine and tests will run on file change
 
-## Bugs/Features
+Or just use [Scale](https://github.com/DragonRidersUnite/scale), a project template for DRGTK that includes DragonTest.
+
+## Features/Problems
 
 - documentation
 - simple DSL
