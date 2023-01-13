@@ -5,6 +5,8 @@
 # assert.false!
 # assert.equal!
 # assert.exception!
+# assert.includes!
+# assert.not_includes!
 # assert.int!
 # + any that you define
 #
@@ -60,6 +62,16 @@ class GTK::Assert
     end
   end
 
+  # usage: assert.includes!([1, 2, 3], 3)
+  def includes!(arr, val)
+    true!(arr.include?(val), "array: #{arr} does not include the val: #{val}")
+  end
+
+  # usage: assert.not_includes!([1, 2, 3], 4)
+  def not_includes!(arr, val)
+    false!(arr.include?(val), "array: #{arr} does include the val: #{val}")
+  end
+
   # usage: assert.int!(2 + 3)
   def int!(obj)
     true!(obj.is_a?(Integer), "that's no integer!")
@@ -71,6 +83,18 @@ def test(method)
 
   define_method(test_name) do |args, assert|
     yield(args, assert)
+  end
+end
+
+test :assert_includes do |args, assert|
+  it "works!" do
+    assert.includes!([1, 2, 3], 3)
+  end
+end
+
+test :assert_not_includes do |args, assert|
+  it "works!" do
+    assert.not_includes!([1, 2, 3], 4)
   end
 end
 
