@@ -47,7 +47,7 @@ end
 - simple DSL
 - easily define custom assertions
 - bash script for running on CI with proper exit code and output on failure
-- watch your tests run when you start your game with the `dragonruby` executable
+- watch your tests run when you start your game with the `dragonruby` executable and save the tests file
 
 ## Docs (a.k.a. How It Works)
 
@@ -69,18 +69,22 @@ You then have access to `args` that you normally do in `#tick` for a DRGTK game.
 - `assert.true!` - whether or not what's passed in is truthy, ex: `assert.true!(5 + 5 == 10)`
 - `assert.false!` - whether or not what's passed in is falsey, ex: `assert.false!(5 + 5 != 10)`
 - `assert.equal!` - whether or not what's passed into param 1 is equal to param 2, ex: `assert.equal!(5, 2 + 3)`
-- `assert.exception!` - expect the code in the block to raise an error, ex: `assert.exception!(KeyError, "Key not found: :not_present") { text(args, :not_present) }`
+- `assert.exception!` - expect the code in the block to raise an error with optional message, ex: `assert.exception!(KeyError, "Key not found: :not_present") { text(args, :not_present) }`
+- `assert.int!` - the passed in value is an Integer
+- `assert.includes!` - whether or not the second param is included in the first arrary parameter, ex: `assert.includes!([1, 2, 3], 2])`
+- `assert.not_includes!` – the second param is not included in the first array param
 
-You can also pass an optional failure message too as the last parameter: `assert.equal(5, 2 + 2, "the math didn't work")`
-
+You can also pass an optional failure message too as the last parameter of many of the assertions: `assert.equal(5, 2 + 2, "the math didn't work")`
 
 ### Custom assertions
 
-Define custom assertions like this within `#test` (see the comment and example in the code)
+Define custom assertions within the `GTK::Assert` class (see the comment and example in the code):
 
 ``` ruby
-assert.define_singleton_method(:rect!) do |obj|
-  assert.true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties to be a rectangle")
+class GTK::Assert
+  def rect!(obj)
+    true!(obj.x && obj.y && obj.w && obj.h, "doesn't have needed properties to be a rectangle")
+  end
 end
 ```
 
